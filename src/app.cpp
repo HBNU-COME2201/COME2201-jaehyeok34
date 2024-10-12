@@ -112,6 +112,11 @@ int main(int argc, char** argv) {
             iter != init_manager.get_agent_list().end(); 
             ++iter 
         ) {
+            // CSimpleDecorator, CSimpleDecorator2, StochasticDecorator, CSpecialAgent 등
+            // 모두 CAgent를 상속 받고 있기 때문에 CAgent instance로 생성 가능하며(다형성),
+            // Decorator는 CAgent의 detect()를 재정의 하고 있고, CSpecialAgent는 toString()을 재정의 하고 있어
+            // CAgent에서 virtual로 선언된 두 메소드는 클라이언트 코드의 변경 없이도 다른 동작을 할 수 있게 함.
+            // 즉, CAgent의 메소드를 호출하더라도 실제 instance가 무엇이냐(자식 클래스)에 따라 그 동작이 달라짐.
             std::cout << "Time: " << sim_time << ", " << **iter << std::endl;
         }
     }
