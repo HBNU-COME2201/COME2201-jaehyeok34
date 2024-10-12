@@ -33,5 +33,7 @@ private:
     static unsigned long AGENT_ID;
 
 public:
+    virtual std::string to_string() const;
+public:
     friend std::ostream& operator<<(std::ostream& os, const CAgent& ag);
 };
